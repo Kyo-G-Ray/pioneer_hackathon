@@ -1,0 +1,51 @@
+{
+    "mail_1" : {
+        "mailfrom": "aaa@gmail.com",
+        "name": "とわっち",
+        "header": "今回のインターンシップについて。",
+        "body": "こんにちは、今回のインターンシップは参加可能ですか。"
+    },
+    "mail_2" : {
+        "mailfrom": "bbb@gmail.com",
+        "name": "オーディオにはまった人",
+        "header": "オーディオ大好きな件について。",
+        "body": "大変ご無沙汰しております。一般社団法人日本オーディオ大好き協会の音楽太郎です。"
+    },
+    "mail_3": {
+        "mailfrom": "ccc@gmail.com",
+        "name": "クラリス",
+        "header": "蓄膿症を治し隊",
+        "body": "こんにちは、ちくのうしょうをなおしたい。"
+    },
+    "mail_4": {
+        "mailfrom": "ddd@gmail.com",
+        "name": "イソジン",
+        "header": "うがい薬",
+        "body": "こんにちは、のどが痛いです。"
+    },
+    "mail_5": {
+        "mailfrom": "eee@gmail.com",
+        "name": "Charles Lindbergh",
+        "header": "I want to travel",
+        "body": "こんにちは、今回のtravelは"
+    },
+    "mail_6": {
+        "mailfrom": "fff@gmail.com",
+        "name": "thml",
+        "header": "Webを作る件について",
+        "body": "ウェブをつくりたい"
+    },
+    "mail_7": {
+        "mailfrom": "ggg@gmail.com",
+        "name": "アンダンテ",
+        "header": "アカペラしかかたん",
+        "body": "アカペラ極めすぎて、スゴイコトになりました。"
+    },
+    "mail_8": {
+        "mailfrom": "hhh@gmail.com",
+        "name": "はらぺこ",
+        "header": "今回のインターンシップについて。",
+        "body": "こんにちは、今回のインターンシップは"
+    }
+}
+

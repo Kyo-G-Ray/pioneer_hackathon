@@ -1,112 +1,71 @@
 "use strict";
 
-$(() => {
 
-  // // 使用・未使用のものは適時追加・削除すること
+fetch("../mail.json")
+.then(response => {
+  return response.json();
+})
 
-  // //ページ内リンクスムーススクロール
-  // $('a[href^="#"]').on('click', function () {
-  //   var href = $(this).attr("href");
-  //   var target = $(href == "#" || href == "" ? 'html' : href);
-  //   var position = target.offset().top;
-  //   $("html, body").animate({
-  //     scrollTop: position
-  //   }, 550, "swing");
-  //   return false;
-  // });
+.then(jsondata => {
 
+  let start = document.querySelector('#start');//再生ボタン
+  // let stop = document.querySelector('#stop');//停止ボタン
 
-
-  // /* =================== */
-  // /*   	  hamburger      */
-  // /* =================== */
-
-  // let hamburger = $("#js-nav_toggle");
-  // let hamBgc = $(".ham_bgc");
-  // let span = $("#js-nav_toggle span");
-  // let body = $("body");
-
-  // hamburger.click(function () {
-  //   hamBgc.toggleClass("active");
-  //   span.toggleClass("open");
-  //   body.toggleClass("hidden");
-  // });
-
-  // hamBgc.click(function () {
-  //   hamBgc.toggleClass("active");
-  //   span.toggleClass("open");
-  //   body.toggleClass("hidden");
-  // });
-
-  // /* =================== */
-  // /*   	  loading      */
-  // /* =================== */
-
-
-  // function lodingStop() {
-  //   $('.boxAnime_load').addClass('start');
-  // }
-  // $(window).on('load', function () {
-  //   lodingStop();
-  // });
-
-
-  // /* =================== */
-  // /*  mask animation      */
-  // /* =================== */
-
-  // let fadeIn = document.querySelectorAll('.boxAnime');
-
-  // window.addEventListener('scroll', () => {
-
-  //   for (let i = 0; i < fadeIn.length; i++) {
-  //     // getBoundingClientRext: 画面内における要素の位置座標取得
-  //     const rect = fadeIn[i].getBoundingClientRect().top;
-
-  //     // window.pageYOffset：スクロール量を取得
-  //     const scroll = window.pageYOffset || document.documentElement.scrollTop;
-
-  //     const offset = rect + scroll;
-
-  //     const windowHeight = window.innerHeight; // 現在のブラウザの高さ
-
-  //     if (scroll > offset - windowHeight + 50) {
-  //       fadeIn[i].classList.add('start');
-  //     }
-
-
-  //   }
-  // });
+  let txtArea = document.querySelector('#speechtxt');//読み上げ箇所を指定
+  let speechTxt = txtArea.textContent;//読み上げ箇所のテキスト取得
 
 
 
+  console.log(jsondata.mail_1);
+  
 
+  
+  const readMail = class {
+    constructor(email, num){
+      this.from = email.mailfrom;
+      this.name = email.name;
+      this.header = email.header;
+      this.body = email.body;
+    }
+
+    readMessage(){
+      let fromText = this.from;
+      let nameText = this.name + "さんからメールです。";
+      let headerText = this.header;
+      let bodyText = this.body;
+      return [nameText + headerText, bodyText];
+    }
+  }
+
+  let text, speechSet;
+
+
+  start.addEventListener('click', function(){//再生
+
+    text = new readMail(jsondata.mail_1, 1);
+    text = text.readMessage();
+    console.log(text[0]);
+
+    speechSet = new SpeechSynthesisUtterance();
+    speechSet.text = text[0];
+    speechSet.lang = 'ja-JP';
+    speechSynthesis.speak(speechSet);
+
+
+    if(1){
+      speechSet = new SpeechSynthesisUtterance();
+      speechSet.text = text[1];
+      speechSet.lang = 'ja-JP';
+      speechSynthesis.speak(speechSet);
+    }
+  }, true);
 
 
 });
 
 
 
-// speechSynthesis.cancel();
 
-// const uttr = new SpeechSynthesisUtterance("Hello World!");
-// // 発言を再生 (発言キューに発言を追加)
-// speechSynthesis.speak(uttr);
-
-
-let start = document.querySelector('#start');//再生ボタン
-let stop = document.querySelector('#stop');//停止ボタン
-
-let txtArea = document.querySelector('#speechtxt');//読み上げ箇所を指定
-let speechTxt = txtArea.textContent;//読み上げ箇所のテキスト取得
-
-start.addEventListener('click', function(){//再生
-  let speechSet = new SpeechSynthesisUtterance();
-  speechSet.text = speechTxt;
-  speechSet.lang = 'ja-JP';
-  speechSynthesis.speak(speechSet);
-}, false);
-
-stop.addEventListener('click', function(){//停止
-  speechSynthesis.cancel();
-}, false);
+// stop.addEventListener('click', function(){//停止
+//   speechSynthesis.cancel();
+// }, false);
