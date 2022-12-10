@@ -18,40 +18,45 @@
   <meta name="robots" content="INDEX,FOLLOW">
   <link rel="icon" type="image/x-icon" href="">
   <link rel="apple-touch-icon" sizes="180×180" href="">
-  <!-- <link rel="stylesheet" href="css/reset.css" /> -->
+  <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 </head>
 <body>
+  <main>
+
+    <div class="inner">
+      <div id="speechtxt">
+        <section>
+          <h1 class="title">Moving Work: </h1>
+          <div class="mailInner">
+            <p class="mailbody">メアド: <span id="mailfrom">from</span></p>
+            <p class="mailbody">名前: <span id="name">name</span></p>
+            <p class="mailbody">件名: <span id="header">header</span></p>
+            <p class="mailbody">本文: <span id="body">body</span></p>
+            <!-- <p class="mailbody">返信: <span id="reply">reply</span></p> -->
+          </div>
+        </section>
+      </div>
+  
+      <button id="startBtn" class="btn">再生ボタン</button>
+  
+  
+      <div id="result-div"></div>
+    </div>
+  </main>
 
 
-  <div id="speechtxt">
-    <section>
-      <h1>Moving Work</h1>
-      <p>mailfrom</p>
-      <p>name</p>
-      <p>header</p>
-      <p>body</p>
-    </section>
-  </div>
 
-  <button id="start">再生ボタン</button>
-
-
-  <div id="result-div"></div>
-
-
-
-    </main>
-    <!-- フッター -->
-    <footer class="footer">
-      <small class="footer_txt">&copy;Bチーム</small>
-    </footer>
-  </div><!-- /.container -->
+  <footer class="footer">
+    <small class="footer_txt">&copy;Bチーム</small>
+  </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

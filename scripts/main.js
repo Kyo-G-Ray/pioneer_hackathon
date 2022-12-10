@@ -1,5 +1,21 @@
 "use strict";
 
+let summaryAry =[];
+function sumJsonAccese() {
+  
+  fetch("../summary.json")
+  .then(response => {
+    return response.json();
+  })
+  
+  .then(jsondata => {
+    for (let i = 1; i < 5; i++) {
+      summaryAry.push(jsondata["mail_" + String(i)]);
+    }
+  });
+}
+sumJsonAccese();
+
 
 fetch("../mail.json")
 .then(response => {
@@ -8,7 +24,7 @@ fetch("../mail.json")
 
 .then(jsondata => {
 
-  let start = document.querySelector('#start');//再生ボタン
+  let start = document.querySelector('#startBtn');//再生ボタン
   // let stop = document.querySelector('#stop');//停止ボタン
 
   let txtArea = document.querySelector('#speechtxt');
@@ -41,7 +57,7 @@ fetch("../mail.json")
           interimTranscript = transcript;
         }
       }
-      resultDiv.innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>';
+      // resultDiv.innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>';
 
       stopFlag = finalTranscript.slice(-2);
       // 読んで or skip
@@ -51,16 +67,14 @@ fetch("../mail.json")
         recognition.stop();
         mailRepeatCount += 1;
         stopFlag = "";
-        speechContinue();
+        speechContinue(mailRepeatCount - 1);
       }
       else if(stopFlag == "ip" || stopFlag == "ップ"){
         console.log("音声認識終了");
         readFlag = false;
         mailRepeatCount += 1;
         stopFlag = "";
-        setTimeout(() => {
-          doSpeech(mailRepeatCount);
-        }, 1000);
+        doSpeech(mailRepeatCount);
         // recognition.stop();
       }
       else{
@@ -89,34 +103,42 @@ fetch("../mail.json")
       let nameText = this.name + "さんからメールです。";
       let headerText = this.header;
       let bodyText = this.body;
-      return [nameText + headerText + "です。本文を読み上げますか？", bodyText];
+
+      document.querySelector('#mailfrom').innerHTML = fromText;
+      document.querySelector('#name').innerHTML = nameText;
+      document.querySelector('#header').innerHTML = headerText;
+      document.querySelector('#body').innerHTML = bodyText;
+      // document.querySelector('#reply').innerHTML = "";
+
+      return [nameText + headerText + "です。本文の要約を読み上げますか？", bodyText];
     }
   }
 
 
 
-  let text, speechSet;
-  let mailNum = Object.keys(jsondata).length
+  let text, speechSet, sumText;
+  let mailNum = Object.keys(jsondata).length;
 
   function speech(mailNum, jsondata) {
     console.log(jsondata);
     text = new readMail(jsondata, mailNum);
     text = text.readMessage();
-    console.log(text[0]);
 
     speechSet = new SpeechSynthesisUtterance();
     speechSet.text = text[0];
     speechSet.lang = 'ja-JP';
     speechSynthesis.speak(speechSet);
 
+
     setTimeout(() => {
       cognition();
     }, 1000);
   }
 
-  function speechContinue() {
+  function speechContinue(num) {
     speechSet = new SpeechSynthesisUtterance();
-    speechSet.text = text[1];
+    sumText = summaryAry[num - 1][0];
+    speechSet.text = sumText;
     speechSet.lang = 'ja-JP';
     setTimeout(() => {
       speechSynthesis.speak(speechSet);
@@ -125,12 +147,17 @@ fetch("../mail.json")
     }, 1000);
   }
 
+
   function doSpeech(num) {
     speech(num, jsondata["mail_" + String(num)]);
+    if(mailRepeatCount == mailNum){
+      recognition.stop();
+    }
   }
 
 
-  start.addEventListener('click', function(){//再生
+
+  start.addEventListener('click', function(){
     speech(1, jsondata["mail_" + String(1)]);
   }, true);
 

@@ -1,0 +1,60 @@
+
+
+body{
+  margin: 0;
+}
+
+
+
+
+.inner{
+  margin: 0 20px;
+}
+
+
+
+.title{
+  margin-bottom: 50px;
+  color: #A90533;
+  font-size: 48px;
+  font-family: 'Caveat', cursive;
+}
+
+.mailInner{
+  margin: 0 40px 20px;
+}
+
+.mailbody{
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+
+
+
+
+.btn{
+  padding: 6px 20px;
+  margin: 0 auto 40px;
+  color: #F8ECEF;
+  background: #A90533;
+  border-radius: 20px;
+  display: block;
+}
+
+
+
+
+
+.footer{
+  padding: 40px 0 20px;
+  color: #F8ECEF;
+  background: #333333;
+}
+
+
+
+.footer_txt{
+  text-align: center;
+  display: block;
+}
