@@ -1,0 +1,142 @@
+
+
+body{
+  margin: 0;
+  background: #FFFDFA;
+}
+
+
+
+
+.inner{
+  margin: 0 20px;
+}
+
+
+
+
+.title{
+  margin-bottom: 50px;
+  color: #A90533;
+  font-size: 48px;
+  font-family: 'Caveat', cursive;
+}
+
+.mailInner{
+  margin: 0 40px 20px;
+}
+
+.mailbody{
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+@media screen and (max-width: 550px) {
+  .mailbody{
+    font-size: 15px;
+  }
+}
+
+
+
+
+
+.btn{
+  padding: 6px 20px;
+  margin: 0 auto 40px;
+  color: #F8ECEF;
+  background: #A90533;
+  border-radius: 20px;
+  display: block;
+}
+
+@media screen and (max-width: 550px) {
+  .btn{
+    font-size: 12px;
+  }
+}
+
+
+
+.hackthon{
+  background: -moz-linear-gradient(top left, #BDBBF8, #FAE8FF); 
+  background: -webkit-linear-gradient(top left, #BDBBF8, #FAE8FF); 
+  background: linear-gradient(to bottom right, #BDBBF8, #FAE8FF);
+}
+
+.hack_inner{
+  padding: 20px 0;
+  margin: 0 5vw;
+}
+
+.thought{
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 550px) {
+  .thought{
+  font-size: 12px;
+  }
+}
+
+.thought:nth-child(7){
+  margin-bottom: 30px;
+}
+
+.fontBold{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 550px) {
+  .fontBold{
+  font-size: 16px;
+  }
+}
+
+.table {
+  border: 1px dotted #3d3d3d;
+  border-collapse: separate;
+  border-spacing: 18px 7px;
+}
+
+@media screen and (max-width: 550px) {
+  .table{
+    font-size: 12px;
+  }
+}
+
+.td{
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.td.tech{
+  background: #D2E4EF;
+}
+
+.td.owner{
+  background: #ffE2DD;
+}
+
+.td.scrum{
+  background: #FDECC8;
+}
+
+
+
+
+
+.footer{
+  padding: 40px 0 20px;
+  color: #F8ECEF;
+  background: #333333;
+}
+
+
+
+.footer_txt{
+  text-align: center;
+  display: block;
+}
